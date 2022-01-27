@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include 
 from rango import views #import the file holding the view functions
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'), #maps basic url to the index function created in views (chap 3.4)
     path('rango/', include('rango.urls')),
     #the above maps any URLS starting with rango/ to be handles by rango
-    path('admin/',admin.site.urls)
+    path('admin/',admin.site.urls),
 ]
+
+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
