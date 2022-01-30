@@ -10,4 +10,9 @@ def index(request): #request is a httpResponse object
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
-    return HttpResponse("<a href='/rango/'>Go back to the rango page</a>") #href defines the url to link to, the text between > and </a> defines the text containing the link
+     
+    context_dict ={'boldmessage':'This tutorial has been put together by David Canavan'}
+
+    return render(request, 'rango/index.html',context=context_dict)
+
+    #return HttpResponse("<a href='/rango/'>Go back to the rango page</a>") #href defines the url to link to, the text between > and </a> defines the text containing the link
