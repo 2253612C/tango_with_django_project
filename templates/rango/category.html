@@ -9,9 +9,11 @@
 
     <body>
 
+        <a href="/rango/">Index</a>
+
         <div>
         {% if category %} 
-            <h1>{{ category.name }} </h1> 
+            <h1>{{ category.name }}</h1> 
             {% if pages %}
             <ul>
                 {% for page in pages %}
@@ -19,10 +21,10 @@
                 {% endfor %} 
             </ul>
             {% else %}
-            <strong> No pages currently in category. </strong>
+            <strong>No pages currently in category.</strong>
             {% endif %}
         {% else %}
-            The specified category does not exist. 
+        The specified category does not exist.
         {% endif %}   
         </div>
 

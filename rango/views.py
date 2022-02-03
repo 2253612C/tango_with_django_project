@@ -6,10 +6,13 @@ from django.http import HttpResponse
 
 def index(request): #request is a httpResponse object
     category_list = Category.objects.order_by('-likes')[:5] #get the 5 most liked categories
+
+    page_list = Page.objects.order_by('-views')[:5] #get the 5 most liked categories
     
     context_dict = {}
     context_dict['boldmessage']='Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories']=category_list
+    context_dict['pages']=page_list
     
 
     return render(request, 'rango/index.html', context=context_dict)
