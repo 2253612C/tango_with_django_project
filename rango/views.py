@@ -21,12 +21,10 @@ def index(request): #request is a httpResponse object
     context_dict['boldmessage']='Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories']=category_list
     context_dict['pages']=page_list
-    
+
     # Call the helper function to handle the cookies
     visitor_cookie_handler(request)
-    context_dict['visits']=int(request.session['visits'])
-
-    # Obtain our Response object early so we can add cookie information.
+    
     response = render(request, 'rango/index.html', context=context_dict)
     return response
 
@@ -37,6 +35,9 @@ def about(request):
     if request.session.test_cookie_worked():
         print("TEST COOKIE WORKED!")
         request.session.delete_test_cookie()
+
+    
+    context_dict['visits']=int(request.session['visits'])
 
     return render(request, 'rango/about.html',context=context_dict)
 
